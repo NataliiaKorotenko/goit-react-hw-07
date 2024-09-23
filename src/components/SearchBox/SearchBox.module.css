@@ -1,0 +1,24 @@
+.searchForm
+ {  display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    max-width: 400px;
+    padding: 20px 15px;
+    background-color: rgb(255,240,245) ;
+    border: 2px solid  rgb(75,0,130);
+    font-size: 18px;
+  }
+
+.searchLabel {
+    margin-bottom: 6px;
+    color: rgb(139,0,139);
+}
+.searchInput{
+  max-width: 350px;
+  padding: 10px 5px;
+  color: rgb(139,0,139);
+  border: 2px solid  rgb(75,0,130);
+  border-radius: 4px;
+  margin-right: 10px;
+  outline: transparent;
+}

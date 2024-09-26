@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { filterValue, setFilterValue } from "../../redux/filtersSlice";
+import { selectFilterValue, setFilterValue } from "../../redux/filtersSlice";
 import css from '../SearchBox/SearchBox.module.css';
 
 function SearchBox() {
   const dispatch = useDispatch();
-  const filterName = useSelector(filterValue);
+  const filterName = useSelector(selectFilterValue); // Використовуємо правильний селектор
 
   const handleFilter = (e) => {
     dispatch(setFilterValue(e.target.value));
@@ -24,3 +24,4 @@ function SearchBox() {
 }
 
 export default SearchBox;
+

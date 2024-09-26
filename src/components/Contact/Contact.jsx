@@ -1,11 +1,7 @@
 import { FaUser, FaPhoneVolume } from "react-icons/fa6";
-import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contactsSlice";
 import css from '../Contact/Contact.module.css';
 
-function Contact({ name, number, id }) {
-  const dispatch = useDispatch();
-
+function Contact({ name, number, id, deleteContact }) {
   return (
     <li className={css.contactItem}>
       <div className={css.contactWrapper}>
@@ -20,7 +16,7 @@ function Contact({ name, number, id }) {
       </div>
       <button 
         type="button"
-        onClick={() => dispatch(deleteContact(id))} 
+        onClick={deleteContact} 
         className={css.deleteButton}
       >
         Delete
@@ -30,4 +26,3 @@ function Contact({ name, number, id }) {
 }
 
 export default Contact;
- 

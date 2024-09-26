@@ -1,22 +1,27 @@
 import { useDispatch, useSelector } from "react-redux";
 import Contact from '../Contact/Contact';
-import { selectContacts, deleteContact } from "../../redux/contactsSlice";
-import { filterValue } from "../../redux/filtersSlice";
+import { selectFilteredContacts, selectLoading, selectError } from "../../redux/contactsSlice";
+import { deleteContact } from "../../redux/contactsOps";
 import css from '../ContactList/ContactList.module.css';
 
 const ContactList = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(filterValue);
+  const filteredContacts = useSelector(selectFilteredContacts);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
 
-  const filteredContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
-
-  if (filteredContacts.length === 0) {
-    return <p>Контакти не знайдені</p>;
+  if (loading) {
+    return <p>Loading contacts...</p>;
   }
-
+  
+  if (error) {
+    return <p>Loading error: {error}</p>;
+  }
+  
+  if (filteredContacts.length === 0) {
+    return <p>No contacts found</p>;
+  }
+  
   return (
     <ul className={css.contactCont}>
       {filteredContacts.map(({ id, name, number }) => (
